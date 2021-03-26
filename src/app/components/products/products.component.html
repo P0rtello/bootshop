@@ -1,0 +1,27 @@
+<div class="page-box">
+  <div *ngIf="!searchService.search" class="side-bar">
+      <h2>Sorteren op</h2>
+      <select id="sort">
+        <option value="rel">Relevantie</option>
+        <option value="phl">Prijs hoog - laag</option>
+        <option value="plh">Prijs laag - hoog</option>
+      </select>
+      <h2>Minimale lengte</h2>
+      <input type="range" min="1" max="100" value="1" class="slider" id="myRange">
+  </div>
+
+  <div *ngIf="!searchService.search"class="banner-box">
+    <h1  style="text-align: center">{{categoryService.cat.toUpperCase()}}</h1>
+    <h3  class="cat_desc">{{categoryService.selectedCategory.description}}</h3>
+  </div>
+
+  <h1 *ngIf="searchService.search" style="text-align: center">Resultaten voor '{{searchService.searchValue.toUpperCase()}}'.</h1>
+
+  <div class="product_box next_prod" *ngFor="let product of productService.selectedProducts" routerLink="/item/{{product.id}}">
+    <img class="product_img" [src]="product.img" [alt]="product.name">
+    <h2 class="product_name">{{product.name}}</h2>
+    <h3 class="product_price">${{product.price}}</h3>
+    <button class="product_buy">Bekijken</button>
+  </div>
+</div>
+

@@ -1,0 +1,13 @@
+html *
+{
+  font-size: 1em;
+  color: #222222;
+  font-family: 'Open Sans', sans-serif;
+}
+
+textarea:focus, input:focus, h1:focus, h2:focus, h3:focus, img:focus, button:focus, div:focus, mat-icon:focus, span:focus{
+  outline: none;
+}
+
+html, body { height: 100%; }
+body { margin: 0; }

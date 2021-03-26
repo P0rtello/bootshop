@@ -1,0 +1,28 @@
+<div class="banner-box">
+  <img class="banner_img" src="../../../assets/deal.jpg" alt="" routerLink="/category/zeilboot">
+</div>
+
+
+<div class="category_box" routerLink="/category/plezierboot">
+    <img class="category_img" src="/assets/pleasure_craft.jpg" alt="/assets/noimage.png">
+    <h2 class="category_name">PLEZIERBOOT</h2>
+</div>
+
+<div class="category_box next_box" routerLink="/category/motorboot">
+  <img class="category_img" src="/assets/motorboot.jpg" alt="/assets/noimage.png">
+  <h2 class="category_name">MOTORBOOT</h2>
+</div>
+
+<div class="category_box next_box" routerLink="/category/roeiboten">
+  <img class="category_img" src="/assets/roeiboot.jpg" alt="/assets/noimage.png">
+    <h2 class="category_name">ROEIBOTEN</h2>
+</div>
+
+
+  <div class="product_box next_prod" *ngFor="let product of _product.products" routerLink="/item/{{product.id}}">
+    <img class="product_img" [src]="product.img" [alt]="product.name">
+    <h2 class="product_name">{{product.name}}</h2>
+    <h3 class="product_price">${{product.price}}</h3>
+    <button class="product_buy">Bekijken</button>
+  </div>
+

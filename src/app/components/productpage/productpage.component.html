@@ -1,0 +1,43 @@
+<div class="page-box">
+  <div class="side-bar">
+    <img class="product_img" src="{{product.img}}" alt="{{product.name}}">
+  </div>
+
+  <div class="banner-box">
+    <h1 class="product_name">{{product.name}}</h1>
+
+    <div class="spec-box">
+      <h1>SPECIFICATIES</h1>
+      <h3 class="cat_desc">Product</h3>
+      <h3 class="cat_desc">Category</h3>
+      <h3 *ngIf="product.lengte>0" class="cat_desc">Lengte</h3>
+      <h3 class="cat_desc">Prijs</h3>
+      <h1>VERZENDING & LEVERING</h1>
+      <h3 class="cat_desc">Sleepkosten</h3>
+      <h3 class="cat_desc">Verwachte leverdatum</h3>
+    </div>
+    <div class="spec-box">
+      <h1>&nbsp;</h1>
+      <h3 class="cat_desc">{{product.name.slice(0, 32)}}...</h3>
+      <h3 class="cat_desc">{{product.cat}}</h3>
+      <h3 *ngIf="product.lengte>0" class="cat_desc">{{product.lengte}}&nbsp;M</h3>
+      <h3 class="cat_desc">€{{product.price}}</h3>
+      <h1>&nbsp;</h1>
+      <h3 class="cat_desc">€199.95</h3>
+      <h3 class="cat_desc">{{myDate  | date:'yyyy-MM-dd'}}
+      </h3>
+    </div>
+    <button class="addtocart" (click)="addToCart()" routerLink="/cart">
+      <span class="material-icons" style="color: white">shopping_cart</span>&nbsp;&nbsp;Nu Kopen!</button>
+  </div>
+
+  <div class="detail-box">
+    <h1>BESCHRIJVING</h1>
+    <h3 *ngIf="product.descr != 'null'" class="cat_desc" style="font-weight: bold">{{product.descr}}</h3>
+    <h3 *ngIf="product.descr2 != 'null'" class="cat_desc">{{product.descr2}}</h3>
+    <h3 *ngIf="product.descr3 != 'null'" class="cat_desc">{{product.descr3}}</h3>
+  </div>
+</div>
+
+
+

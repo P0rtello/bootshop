@@ -1,0 +1,63 @@
+<div class="page-box">
+  <div class="side-bar">
+    <div class="above-cart">
+      <h2 class="cart-header-product" >Ik ben al klant</h2>
+    </div>
+
+    <form action="" [formGroup]="loginForm" (keyup.enter)="login()">
+      <h2>email</h2>
+      <input type="text" formControlName="email">
+      <span *ngIf="isValidLogin('email')">Voer een geldig emailadres in.</span>
+      <h2>wachtwoord</h2>
+      <input type="password" formControlName="password">
+      <span *ngIf="isValidLogin('password')" >Het invullen van een wachtwoord is verplicht.</span>
+    </form>
+
+
+    <button class="addtocart" (click)="login()" [disabled]='!loginForm.valid' routerLink="/home" >
+      Inloggen
+    </button>
+  </div>
+
+  <div class="banner-box">
+    <div class="above-cart">
+      <h2 class="cart-header-product" >Ik ben een nieuwe klant</h2>
+    </div>
+    <h2 class="trust-text">&#9679; Eenvoudig registreren</h2>
+    <h2 class="trust-text">&#9679; Kost slechts een paar seconden</h2>
+    <h2 class="trust-text">&#9679; Beheer meerdere verzendadressen</h2>
+    <h2 class="trust-text">&#9679; Behoud het overzicht van al uw bestellingen</h2>
+
+
+    <form action="" [formGroup]="registerForm" (keyup.enter)="register()">
+      <h2>email</h2>
+      <input type="text" formControlName="email">
+      <span *ngIf="isValid('email')">Voer een geldig emailadres in.</span>
+
+      <h2>gebruikersnaam</h2>
+      <input type="text" formControlName="username">
+      <span *ngIf="isValid('username')" >Het invullen van een gebruikersnaam is verplicht.</span>
+
+      <h2>wachtwoord</h2>
+      <input type="password" formControlName="password">
+      <span *ngIf="isValid('password')" >Het invullen van een wachtwoord is verplicht.</span>
+
+      <h2>herhaal wachtwoord</h2>
+      <input type="password" formControlName="confirmpassword">
+      <br>
+      <span *ngIf="isValid('confirmpassword')" class="wrong-pass">Wachtwoorden komen niet overeen.</span>
+    </form>
+
+    <button class="addtocart" (click)="register()" [disabled]="!registerForm.valid">
+      Mijn Account Aanmaken
+    </button>
+
+    <h1>{{successMessage}}</h1>
+  </div>
+
+  <div class="detail-box">
+  </div>
+</div>
+
+
+

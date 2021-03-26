@@ -1,0 +1,60 @@
+<div class="header_box" style="background-color: white">
+  <div class="header_space">
+    <img routerLink="/home" class="shop_icon" src="assets/logo.png"/>
+
+    <input matInput class="search_box" placeholder="Zoek een product..." [value]="searchValue" (keyup.enter)="searchService.searchFunction($event)">
+
+    <div *ngIf="!userService.isLoggedIn" class="account_action">
+      <h2  class="account_button" routerLink="/login">Inloggen</h2>
+      <img class="account_icon" routerLink="/login" src="https://img.icons8.com/material-sharp/24/000000/user.png"/>
+    </div>
+
+    <div *ngIf="userService.isLoggedIn" class="account_action" [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseenter)="menuTrigger.openMenu()">
+      <h2 class="account_button" routerLink="/login" (click)="logout()">{{userService.username}}</h2>
+      <img class="account_icon" routerLink="/login" (click)="logout()" src="https://img.icons8.com/material-sharp/24/000000/user.png"/>
+
+      <mat-menu #menu="matMenu" [overlapTrigger]="false">
+        <span (mouseleave)="menuTrigger.closeMenu()">
+          <button mat-menu-item>
+            <mat-icon routerLink="/home">account_circle</mat-icon>
+            <span routerLink="/home">Gegevens</span>
+            &nbsp;&nbsp;&nbsp;
+            <mat-icon>exit_to_app</mat-icon>
+          <span>Logout</span>
+          </button>
+        </span>
+      </mat-menu>
+    </div>
+
+
+    <div class="banner-cart" routerLink="/cart">
+      <span class="material-icons cart" style="color: black" >shopping_cart</span>
+      <h2 class="cart-amount">{{shoppingcartService.getAmountOfProductsInCart()}}</h2>
+    </div>
+    <img class="menu_icon" src="https://img.icons8.com/material-rounded/24/000000/drag-list-down.png"/>
+  </div>
+</div>
+
+<div class="no_mobile">
+  <div class="header_box box2">
+    <div class="header_space">
+      <div class="middle">
+        <h1 class="header_button" routerLink="/category/plezierboot">PLEZIERBOOT</h1>
+        <h2 class="button_divider">|</h2>
+        <h1 class="header_button" routerLink="/category/zeilboot">ZEILBOOT</h1>
+        <h2 class="button_divider">|</h2>
+        <h1 class="header_button" routerLink="/category/motorboot">MOTORBOOT</h1>
+        <h2 class="button_divider">|</h2>
+        <h1 class="header_button" routerLink="/category/sloep">SLOEP</h1>
+        <h2 class="button_divider">|</h2>
+        <h1 class="header_button" routerLink="/category/catamaran">CATAMARAN</h1>
+        <h2 class="button_divider">|</h2>
+        <h1 class="header_button" routerLink="/category/roeiboten">ROEIBOTEN</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<input matInput class="search_box_mobile" placeholder="Zoek een product...">

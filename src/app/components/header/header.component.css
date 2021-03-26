@@ -1,0 +1,236 @@
+.header_box {
+  background-color: #f1f1f1;
+  height: 60px;
+  max-height: 60px;
+}
+
+.box2{
+  height: 50px;
+  max-height: 50px;
+}
+
+.header_space {
+  width: 85%;
+  max-width: 1060px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.shop_icon {
+  width: 280px;
+  height: auto;
+  margin-top: 10px;
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: top;
+}
+
+.account_button {
+  float: right;
+  margin-top: 19px;
+  vertical-align: top;
+}
+
+.search_box {
+  height: 26px;
+  width: 25%;
+  margin-left: 9%;
+  border: 2px solid #c5c5c5;
+  border-radius: 10px;
+  background: url(src/assets/baseline_search_black_48dp.png) no-repeat scroll 96% 0;
+  padding-right: 38px;
+  text-indent: 10px;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 15px;
+}
+
+.search_box_mobile {
+  height: 26px;
+  width: 85%;
+  margin-left: 7.5%;
+  border: 2px solid #c5c5c5;
+  border-radius: 10px;
+  background: url(src/assets/baseline_search_black_48dp.png) no-repeat scroll 96% 0;
+  text-indent: 10px;
+  margin-bottom: 8px;
+  display: none;
+}
+
+.account_icon {
+  float: right;
+  margin-right: 5px;
+  margin-top: 16px;
+  vertical-align: top;
+}
+
+.account_action:hover{
+  cursor: pointer;
+  opacity: 60%;
+}
+
+.account_action{
+  display: inline-block;
+  vertical-align: top;
+  float: right;
+}
+
+.banner-cart{
+  display: inline-block;
+  height: 50px;
+  float: right;
+  margin-right: 5%;
+  vertical-align: top;
+  margin-top: 10px;
+}
+
+.banner-cart:hover{
+  cursor: pointer;
+  opacity: 60%;
+}
+
+.cart{
+  display: inline-block;
+  vertical-align: top;
+
+}
+
+.cart-amount{
+  display: inline-block;
+  color: white;
+  background-color: black;
+  border-radius: 14px;
+  text-align: center;
+  min-width: 22px;
+  font-weight: bold;
+  vertical-align: top;
+}
+
+.menu_icon {
+  float: right;
+  margin-right: 25px;
+  margin-top: 12px;
+  display: none
+}
+
+.space {
+  margin-left: 17.5%
+}
+
+.header_button {
+  font-size: 14px;
+  display: inline-block;
+  transition: .1s
+}
+
+.button_divider {
+  margin-left: 2.5%;
+  display: inline-block;
+  margin-right: 2.5%
+}
+
+.middle {
+  width: 84%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.header_button:hover {
+  transform: scale(1.08);
+  cursor: pointer
+}
+
+@media (max-width:1375px) {
+  .header_button {
+    font-size: 14px
+  }
+  .middle {
+    width: 84%
+  }
+
+}
+
+@media (max-width:1315px) {
+  .header_button {
+    font-size: 14px
+  }
+  .middle {
+    width: 81%
+  }
+
+  .button_divider {
+    margin-left: 1.8%;
+    margin-right: 1.8%
+  }
+}
+
+@media (max-width:1250px) {
+  .header_button {
+    font-size: 14px
+  }
+  .middle {
+    width: 83%
+  }
+}
+
+@media (max-width:1200px) {
+  .header_button {
+    font-size: 14px
+  }
+  .middle {
+    width: 83%
+  }
+}
+
+@media (max-width:1180px) {
+  .header_button {
+    font-size: 13.5px
+  }
+  .middle {
+    width: 87%
+  }
+}
+
+@media (max-width:1100px) {
+  .no_mobile {
+    display: none
+  }
+  .fitnex_icon {
+    width: 220px
+  }
+  .account_button {
+    display: none
+  }
+  .menu_icon {
+    display: block
+  }
+}
+
+@media (max-width:770px) {
+  .search_box{
+    display: none;
+  }
+  .search_box_mobile{
+    display: block;
+  }
+}
+
+@media (max-width:500px) {
+  .fitnex_icon {
+    width: 190px
+  }
+}
+
+@media (max-width:350px) {
+  .fitnex_icon {
+    width: 160px
+  }
+}
+
+@media (max-width:290px) {
+  .fitnex_icon {
+    width: 120px
+  }
+}

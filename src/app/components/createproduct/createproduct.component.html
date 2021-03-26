@@ -1,0 +1,72 @@
+<div class="page-box">
+  <div class="side-bar">
+    <div class="above-cart">
+      <h2 class="cart-header-product" >Nieuw product aanmaken</h2>
+    </div>
+
+    <form action="" [formGroup]="productForm">
+      <h2 style="display: inline-block">Naam</h2>
+      <h2 style="display: inline-block; margin-left: 56%">Categorie</h2>
+      <input type="text" formControlName="name" style="display: inline-block; padding-right: 17%; vertical-align: top">
+<!--      <span *ngIf="isValid('name')">Voer een geldige naam in.</span>-->
+
+
+      <select #amount id="sort" formControlName="category" style="display: inline-block; vertical-align: top; margin-left: 11.5%; height: 29px">
+        <option value="">Kies categorie...</option>
+        <option value="plezierboot">Plezierboot</option>
+        <option value="zeilboot">Zeilboot</option>
+        <option value="motorboot">Motorboot</option>
+        <option value="sloep">Sloep</option>
+        <option value="catamaran">Catamaran</option>
+        <option value="roeiboten">Roeiboten</option>
+      </select>
+<!--      <span *ngIf="isValid('category')" >Het invullen van een categorie is verplicht.</span>-->
+
+      <h2>Afbeelding URL</h2>
+      <input type="text" formControlName="img" style="width: 93%">
+<!--      <span *ngIf="isValid('img')" >Het invullen van een afbeelding URL is verplicht.</span>-->
+
+      <h2 style="display: inline-block; padding-right: 45%">Prijs</h2>
+      <h2 style="display: inline-block; padding-right: 20%">lengte</h2>
+
+      <input type="text" formControlName="price" style="padding-right: 10%">
+<!--      <span *ngIf="isValid('price')" >Het invullen van een prijs is verplicht.</span>-->
+
+      <input type="number" formControlName="lengte" style="display: inline-block; margin-left: 5%; padding-right: 7%">
+<!--      <span *ngIf="isValid('weight')" >Het invullen van een gewicht is verplicht.</span>-->
+
+      <h2>Omschrijving Header</h2>
+      <textarea type="textarea" formControlName="desc" style="width: 93%"></textarea>
+
+      <h2>Omschrijving 1</h2>
+      <textarea type="textarea" formControlName="desc2" style="width: 93%"></textarea>
+
+      <h2>Omschrijving 2</h2>
+      <textarea type="textarea" formControlName="desc3" style="width: 93%"></textarea>
+    </form>
+
+
+    <button class="addtocart" (click)="createProduct()">
+      Product aanmaken
+    </button>
+  </div>
+
+  <div class="banner-box">
+    <div class="above-cart">
+      <h2 class="cart-header-product" >Preview</h2>
+    </div>
+
+    <div class="product_box">
+      <img class="product_img" [src]="productForm.value.img" alt="">
+      <h2 class="product_name">{{productForm.value.name}}</h2>
+      <h3 class="product_price">${{productForm.value.price}}</h3>
+      <button class="product_buy">Bekijken</button>
+    </div>
+  </div>
+
+  <div class="detail-box">
+  </div>
+</div>
+
+
+

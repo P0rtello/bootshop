@@ -1,9 +1,6 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ProductService} from '../../services/product.service';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {Subscription} from 'rxjs';
-import {CategoryService} from '../../services/category.service';
-import {Product} from '../../models/product';
+import { Router} from '@angular/router';
 import {ShoppingcartService} from '../../services/shoppingcart.service';
 import {HttpService} from '../../services/http.service';
 import {UserService} from '../../services/user.service';
@@ -38,6 +35,12 @@ export class CreateProductComponent implements OnInit {
   }
 
   ngOnInit() {
+this._nodejs.verifyToken().subscribe(data =>{
+  console.log("valid");
+}, error =>{
+  localStorage.clear();
+  this._router.navigate([`login`]);
+} )
   }
 
   isValid(controlName) {

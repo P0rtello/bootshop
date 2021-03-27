@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {
-  HttpClient, HttpErrorResponse,
+  HttpClient,
   HttpHeaders
 } from "@angular/common/http";
 import {map} from 'rxjs/operators';
@@ -37,11 +37,7 @@ export class HttpService {
       .post(this.databaseUrl + "/user/add?email=" + email + "&password=" + password, this.options);
   }
 
-  login(email:string, password:string): Observable<User>{
-    return this.http
-      .get(this.databaseUrl + "/user/login/" + email + "/" + btoa(password))
-      .pipe(map(res => <User>res));
-  }
+
 
 
 }

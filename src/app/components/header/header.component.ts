@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {ShoppingcartService} from '../../services/shoppingcart.service';
 import {ProductService} from '../../services/product.service';
 import {Router} from '@angular/router';
@@ -10,9 +10,11 @@ import {SearchService} from '../../services/search.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
 
   searchValue : string = "";
+  username : string = ""
+  loggedIn : boolean = false;
 
 
   constructor(public shoppingcartService:ShoppingcartService,
@@ -21,6 +23,16 @@ export class HeaderComponent {
               public userService:UserService,
               public searchService:SearchService){
 
+  }
+
+  ngOnInit() {
+    this.loggedIn = this.userService.loggedIn();
+    this.userService.checkLogin();
+    this.username = localStorage.getItem('username')
+  }
+
+  gegevens(){
+    console.log("loads amezing gegevens pagina");
   }
 
   logout(){

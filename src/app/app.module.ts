@@ -6,7 +6,7 @@ import {HomeComponent} from './components/home/home.component';
 import {HeaderComponent} from './components/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import {RouterModule} from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ProductService} from './services/product.service';
 import {FooterComponent} from './components/footer/footer.component';
@@ -23,6 +23,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NodeJSService} from './services/nodejs.service';
 import {CreateProductComponent} from './components/createproduct/createproduct.component';
 import {SearchService} from './services/search.service';
+import {AuthGuard} from './auth.guard';
+import {TokenInterceptorService} from './services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,10 @@ import {SearchService} from './services/search.service';
     MatMenuModule,
     MatIconModule
   ],
-  providers: [ProductService, CategoryService, ShoppingcartService, CookieService, UserService, NodeJSService, SearchService],
+  providers: [ProductService,AuthGuard, CategoryService, ShoppingcartService, CookieService, UserService, NodeJSService, SearchService,
+    {provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

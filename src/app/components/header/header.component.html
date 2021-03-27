@@ -10,17 +10,17 @@
     </div>
 
     <div *ngIf="userService.isLoggedIn" class="account_action" [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseenter)="menuTrigger.openMenu()">
-      <h2 class="account_button" routerLink="/login" (click)="logout()">{{userService.username}}</h2>
+      <h2 class="account_button" routerLink="/login" (click)="logout()">{{username}}</h2>
       <img class="account_icon" routerLink="/login" (click)="logout()" src="https://img.icons8.com/material-sharp/24/000000/user.png"/>
 
       <mat-menu #menu="matMenu" [overlapTrigger]="false">
         <span (mouseleave)="menuTrigger.closeMenu()">
           <button mat-menu-item>
             <mat-icon routerLink="/home">account_circle</mat-icon>
-            <span routerLink="/home">Gegevens</span>
+            <span routerLink="/home" (click)="gegevens()" >Gegevens</span>
             &nbsp;&nbsp;&nbsp;
             <mat-icon>exit_to_app</mat-icon>
-          <span>Logout</span>
+          <span (click)="logout()">Logout</span>
           </button>
         </span>
       </mat-menu>

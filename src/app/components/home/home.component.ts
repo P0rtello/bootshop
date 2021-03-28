@@ -8,6 +8,6 @@ import {ProductService} from '../../services/product.service';
 })
 export class HomeComponent {
 
-  constructor(private _product: ProductService){
+  constructor(public _product: ProductService){
   }
 }

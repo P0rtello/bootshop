@@ -13,7 +13,7 @@ import {ProductService} from './services/product.service';
 export class AppComponent implements OnInit{
   title = 'Boot shop';
 
-  constructor(private _cookie: CookieService, private _user:UserService, private _products:ProductService){
+  constructor(public _cookie: CookieService, public _user:UserService, public _products:ProductService){
     this._products.loadProducts();
     this._user.checkLogin();
 

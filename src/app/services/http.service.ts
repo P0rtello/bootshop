@@ -6,12 +6,13 @@ import {
 } from "@angular/common/http";
 import {map} from 'rxjs/operators';
 import {User} from '../models/user';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HttpService {
-
+  private url = environment.api_url;
   databaseUrl: string = "http://localhost:8080";
   options = {headers: new HttpHeaders().set('Content-Type', 'application/json')};
 

@@ -5,53 +5,56 @@ import {
   HttpParams
 } from '@angular/common/http';
 import { map} from 'rxjs/operators';
-
+import { environment } from '../../environments/environment';
 import {Product} from '../models/product';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class NodeJSService {
+  private url = environment.api_url;
 
   constructor(private _http: HttpClient) {
+
   }
 
    submitOrder(body:any){
     console.log("bjhhrnaijfh");
-    return this._http.post('http://localhost:3000/order/create', body,{
+    return this._http.post(this.url+ '/order/create', body,{
       observe:'body',
       params: new HttpParams().append('token', localStorage.getItem('token'))
     });
   }
 
   submitRegistration(body:any){
-    return this._http.post('http://localhost:3000/users/register', body,{
+    return this._http.post(this.url+ '/users/register', body,{
       observe:'body'
     });
   }
 
   login(body:any){
-    return this._http.post('http://localhost:3000/users/login', body,{
+    return this._http.post(this.url+ '/users/login', body,{
       observe:'body'
     });
   }
 
   verifyToken() {
-    return this._http.get('http://localhost:3000/users/verify', {
+    return this._http.get(this.url+ '/users/verify', {
       observe: 'body',
       params: new HttpParams().append('token', localStorage.getItem('token'))
     });
   }
 
   createProduct(body:any){
-    return this._http.post('http://localhost:3000/products/create', body,{
+    return this._http.post(this.url+ '/products/create', body,{
       observe:'body',
       params: new HttpParams().append('token', localStorage.getItem('token'))
     });
   }
 
   loadProducts(): Observable<Product[]>{
-    return this._http.get('http://localhost:3000/products/load').pipe(map(res => <Product[]>res));
+    return this._http.get(this.url+ '/products/load').pipe(map(res => <Product[]>res));
   }
 
 

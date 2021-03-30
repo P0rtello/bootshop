@@ -32,7 +32,12 @@ export class HeaderComponent implements OnInit{
   }
 
   gegevens(){
-    console.log("loads amezing gegevens pagina");
+    if(this.userService.isAdmin()){
+      this.router.navigate(["/create"])
+    }else{
+      console.log("loads amezing gegevens pagina");
+    }
+
   }
 
   logout(){

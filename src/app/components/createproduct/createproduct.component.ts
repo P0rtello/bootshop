@@ -1,10 +1,9 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../services/product.service';
 import { Router} from '@angular/router';
 import {ShoppingcartService} from '../../services/shoppingcart.service';
-import {HttpService} from '../../services/http.service';
 import {UserService} from '../../services/user.service';
-import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormControl, FormGroup, Validators} from '@angular/forms';
 import {NodeJSService} from '../../services/nodejs.service';
 
 
@@ -17,9 +16,8 @@ import {NodeJSService} from '../../services/nodejs.service';
 export class CreateProductComponent implements OnInit {
 
   productForm: FormGroup;
-  successMessage: String = '';
 
-  constructor(private _product: ProductService, private _cart: ShoppingcartService, private _http: HttpService,
+  constructor(private _product: ProductService, private _cart: ShoppingcartService,
               private _user: UserService, private _nodejs: NodeJSService, private _router: Router) {
     this.productForm = new FormGroup({
       name: new FormControl(null, Validators.required),
@@ -36,27 +34,25 @@ export class CreateProductComponent implements OnInit {
 
   ngOnInit() {
 this._nodejs.verifyToken().subscribe(data =>{
-  console.log("valid");
 }, error =>{
   localStorage.clear();
   this._router.navigate([`login`]);
 } )
   }
 
-  isValid(controlName) {
-    return this.productForm.get(controlName).invalid && this.productForm.get(controlName).touched;
-  }
 
   createProduct() {
-    console.log(this.productForm.value);
 
     if (this.productForm.valid) {
       this._nodejs.createProduct(this.productForm.value)
         .subscribe(
           data => {
+            alert("Product with product name : " + this.productForm.value.name + " made successfuly!");
+            this.productForm.reset();
             console.log(data);
           },
           error => {
+            console.log(error);
           }
         );
     }

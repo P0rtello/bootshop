@@ -5,6 +5,8 @@ import {ShoppingcartEntry} from '../models/shoppingcartentry';
 
 @Injectable()
 export class CookieService{
+  //not In use because of clearing shoppingCart Entries bug :(
+
 
 
   constructor(private _cart:ShoppingcartService, private _product:ProductService){
@@ -17,6 +19,7 @@ export class CookieService{
       document.cookie = "amount" + counter + "=" + entry.amount;
       counter++;
     }
+
   }
 
   readCookies(){

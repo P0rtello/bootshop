@@ -29,7 +29,7 @@ export class ShoppingcartComponent implements OnInit{
       let orderId = response["orderId"];
       console.log(orderId);
       alert("Order wirth orderId: " + orderId + " successful");
-
+      this.shoppingcartService.clearCart();
 
       this._router.navigate([`/home`])
 

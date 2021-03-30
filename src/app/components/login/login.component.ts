@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../services/product.service';
 import { Router} from '@angular/router';
 import {ShoppingcartService} from '../../services/shoppingcart.service';
-import {HttpService} from '../../services/http.service';
+
 import {UserService} from '../../services/user.service';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {NodeJSService} from '../../services/nodejs.service';
@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit{
 
   constructor(private _product: ProductService,
               private _cart:ShoppingcartService,
-              private _http:HttpService,
               private _user:UserService,
               private _nodejs:NodeJSService,
               private _router:Router){
@@ -79,7 +78,10 @@ export class LoginComponent implements OnInit{
     if (this.registerForm.valid) {
       this._nodejs.submitRegistration(this.registerForm.value)
         .subscribe(
-          data => this.successMessage = 'Registration Success',
+          data =>{ this.successMessage = 'Registration Success';
+            this._user.isLoggedIn = true;
+            localStorage.setItem('token', data.toString());
+            this._router.navigate(['/home']);},
           error => this.successMessage = 'Some error'
         );
     }

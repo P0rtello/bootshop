@@ -20,7 +20,6 @@ export class NodeJSService {
   }
 
    submitOrder(body:any){
-    console.log("bjhhrnaijfh");
     return this._http.post(this.url+ '/order/create', body,{
       observe:'body',
       params: new HttpParams().append('token', localStorage.getItem('token'))

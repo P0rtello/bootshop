@@ -1,14 +1,13 @@
 import {Injectable, OnInit} from '@angular/core';
 import {Product} from '../models/product';
-import {ActivatedRoute} from '@angular/router';
 import {ShoppingcartEntry} from '../models/shoppingcartentry';
-import {CookieService} from './cookie.service';
 
 @Injectable()
 export class ShoppingcartService{
 
 
   private _cart : ShoppingcartEntry[] = [];
+
 
   constructor(){
   }
@@ -20,6 +19,19 @@ export class ShoppingcartService{
       this._cart.push(new ShoppingcartEntry(product, 1));
     }
   }
+
+  removeFromCart(entry){
+    const index: number = this._cart.indexOf(entry)
+    if(index !== -1) {
+      this._cart.splice(index, 1);
+    }
+
+  }
+
+  clearCart(){
+    this._cart = [];
+  }
+
 
   changeAmountOfEntry(id:number, amount:number){
     for(let entry of this._cart){
@@ -59,7 +71,6 @@ export class ShoppingcartService{
     let value = 0;
     for(let product of this._cart){
       value += product.amount * product.product.price;
-      console.log(this._cart);
     }
     return value ;
   }

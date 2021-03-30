@@ -19,7 +19,7 @@ import { DatePipe } from '@angular/common';
 export class ProductPageComponent {
 
   mySubscription:Subscription;
-  product : Product;
+  product : Product = <Product>{};
   myDate = new Date();
   constructor(private productService: ProductService,
               private route: ActivatedRoute,
@@ -30,6 +30,8 @@ export class ProductPageComponent {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
+
+
     this.mySubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         setTimeout(()=>{
@@ -41,6 +43,7 @@ export class ProductPageComponent {
 
   }
 
+
   loadProduct(){
     let id = this.route.snapshot.paramMap.get("id");
     this.product = this.productService.getProductById(Number(id));
@@ -49,11 +52,15 @@ export class ProductPageComponent {
   addToCart(){
     let id = this.route.snapshot.paramMap.get("id");
     this.shoppingcartService.addToCart(this.productService.getProductById(Number(id)));
-    console.log(this.shoppingcartService.cart + id);
 
-    setTimeout(()=>{
-      this.cookieService.createCookies();
-    },300)
+
+    // setTimeout(()=>{
+    //   this.cookieService.createCookies();
+    // },300)
+  }
+  removeFromCart(){
+    let id = this.route.snapshot.paramMap.get("id");
+    this.shoppingcartService;
   }
 
 }

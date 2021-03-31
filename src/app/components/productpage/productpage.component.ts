@@ -1,12 +1,11 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component} from '@angular/core';
 import {ProductService} from '../../services/product.service';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
-import {CategoryService} from '../../services/category.service';
 import {Product} from '../../models/product';
 import {ShoppingcartService} from '../../services/shoppingcart.service';
 import {CookieService} from '../../services/cookie.service';
-import { DatePipe } from '@angular/common';
+
 
 
 
@@ -58,9 +57,9 @@ export class ProductPageComponent {
     //   this.cookieService.createCookies();
     // },300)
   }
-  removeFromCart(){
-    let id = this.route.snapshot.paramMap.get("id");
-    this.shoppingcartService;
-  }
+  // removeFromCart(){
+  //   let id = this.route.snapshot.paramMap.get("id");
+  //   this.shoppingcartService;
+  // }
 
 }
